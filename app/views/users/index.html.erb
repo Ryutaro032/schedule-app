@@ -16,6 +16,7 @@
                 <th>終日</th>
                 <th>更新日時</th>
                 <th>スケジュール詳細</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@
                 <td><%=user.all_day%></td>
                 <td><%=user.updated_at.to_s(:datetime_jp)%></td>
                 <td><%= link_to "詳細へ", user %></td>
+                <td><%= link_to "編集する", [:edit,user] %></td>
             </tr>
         <%end%>
         </tbody>

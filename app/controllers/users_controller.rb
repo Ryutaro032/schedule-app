@@ -22,9 +22,17 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update(params.require(:user).permit(:title, :start_day, :end_day, :all_day, :memo))
+      flash[:notice] = "「#{@user.title}」が更新されました"
+      redirect_to :users
+    else
+      render "edit"
+    end
   end
 
   def destroy
