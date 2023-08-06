@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
+    @total = User.count
+    @today = Date.today
   end
   
   def new
@@ -13,7 +15,8 @@ class UsersController < ApplicationController
       flash[:notice] = "スケジュールを追加しました"
       redirect_to :users
     else
-      render "new"
+      flash[:notice] = "スケジュールを追加できていません"
+      render "new", status: :unprocessable_entity
     end
   end
 
@@ -31,6 +34,7 @@ class UsersController < ApplicationController
       flash[:notice] = "「#{@user.title}」が更新されました"
       redirect_to :users
     else
+      flash[:notice] = "「#{@user.title}」が更新されませんでした"
       render "edit"
     end
   end

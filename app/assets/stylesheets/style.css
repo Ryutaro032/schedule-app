@@ -65,3 +65,17 @@ table td {
     padding: 5px;
     text-align: center;
 }
+
+.total-contents{
+    background-color: #f9ecd5;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contents{
+    padding: 15px 30px;
+}
+.contents span{
+    font-size: 25px;
+    font-weight: bold;
+}

@@ -13,8 +13,8 @@
 ActiveRecord::Schema[7.0].define(version: 2023_07_31_140734) do
   create_table "users", force: :cascade do |t|
     t.string "title"
-    t.datetime "start_day"
-    t.datetime "end_day"
+    t.date "start_day"
+    t.date "end_day"
     t.string "all_day"
     t.string "memo"
     t.datetime "created_at", null: false

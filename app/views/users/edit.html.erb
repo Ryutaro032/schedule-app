@@ -1,4 +1,8 @@
 <div class="form">
+<%if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+<%end%>
+<%= render "shared/error", obj: @user %>
 <%= form_with model: @user do |f| %>
     <div class="form-button">
         <p><%= f.submit "更新する",class:"link" %></p>
