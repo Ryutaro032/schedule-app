@@ -1,0 +1,47 @@
+<div class="main-header">
+    <h3>スケジュール一覧</h3>
+    <p><%= link_to"新規追加", :new_user, class:"link" %></p>
+</div>
+<%if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+<%end%>
+<div class="main">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>タイトル</th>
+                <th>開始日</th>
+                <th>終了日</th>
+                <th>終日</th>
+                <th>更新日時</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @users.each do |user| %>
+            <tr>
+                <td><%=user.id%></td>
+                <td><%=user.title%></td>
+                <td><%=user.start_day.strftime("%Y/%m/%d")%></td>
+                <td><%=user.end_day.strftime("%Y/%m/%d")%></td>
+                <td><%=user.all_day%></td>
+                <td><%=user.updated_at.to_s(:datetime_jp)%></td>
+                <td><%= link_to "詳細へ", user %></td>
+                <td><%= link_to "編集する", [:edit,user] %></td>
+                <td><%= button_to "削除", user, method: :delete, data: {turbo_confirm: "本当に削除しますか？"}%></td>
+            </tr>
+        <%end%>
+        </tbody>
+    </table>
+    <div class="total-contents">
+        <div class="contents">
+            <p>合計<span><%= @total %></span>件</p>
+        </div>
+        <div class="contents">
+            <p>本日の日付:<%= @today.strftime("%Y/%m/%d")%></p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="main-header">
+    <p><%= link_to"スケジュール一覧に戻る", :users, class:"link" %></p>
+</div>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>タイトル</th>
+                <th>開始日</th>
+                <th>終了日</th>
+                <th>終日</th>
+                <th>スケジュールメモ</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%=@user.title%></td>
+                <td><%=@user.start_day.strftime("%Y/%m/%d")%></td>
+                <td><%=@user.end_day.strftime("%Y/%m/%d")%></td>
+                <td><%=@user.all_day%></td>
+                <td><%=@user.memo%></td>
+                <td><%= link_to "編集する", [:edit,@user] %></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
